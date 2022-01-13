@@ -1,0 +1,24 @@
+body{
+	border: none;
+	margin: 0;
+}
+
+/* animated wave background */
+#background{
+	position: fixed;
+	height: 104%;
+	width: 104%;
+	left: -2%;
+	top: -2%;
+	z-index: -3;
+
+	background-image: url("https://bit.ly/3nxigCP");
+	background-size: 100% 100%;
+	-webkit-filter: blur(3px); 
+	-moz-filter: blur(3px);
+	-o-filter: blur(3px);
+	-ms-filter: blur(3px);
+	filter: blur(3px);
+
+	border: none;
+}
