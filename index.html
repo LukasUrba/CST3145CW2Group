@@ -3,6 +3,7 @@
 <html>
     <head>
         <title>Second Coursework</title>
+        <script src="https://unpkg.com/vue"></script>
         <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
@@ -13,25 +14,23 @@
 
 
 
-
-
-    </body>
-
-    <script>
+        <script>
 
         let shop = new Vue({
             data:{
                 product:{}
             },
             created:function(){
-                fetch('http://localhost:3000').then(
-                    function(response){
+                fetch('http://localhost:3000/user').
+                then(function(response){
                         response.text().then(
-                        function(json){
-                            store.product = json;
+                        function(text){
+                           alert(text);
                             });
                     })
             }
         })
+        
     </script>
+    </body>
 </html>

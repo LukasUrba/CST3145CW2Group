@@ -1,14 +1,15 @@
 var express = require("express");
 var path = require("path");
 var http = require("http");
-const cors = require('cors')
-app.use(cors());
+const cors = require('cors');
+
 
 var app = express();
 
 var publicPath = path.resolve(__dirname, "public");
 app.use(express.static(publicPath));
 
+app.use(cors());
 
 app.use(function(request,response,next) {
     console.log("Request IP: " + request.url);
