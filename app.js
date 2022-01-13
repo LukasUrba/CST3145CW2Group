@@ -1,6 +1,7 @@
 var express = require("express");
 var path = require("path");
 var http = require("http");
+const { stdout } = require("process");
 
 var app = express();
 
@@ -25,5 +26,5 @@ app.get("/user", function(request, response) {
 app.use(function(request, response) {
     response.end("This page has not been made yet!");
 });
-
+console.log("HELLO");
 app.listen(3000);
