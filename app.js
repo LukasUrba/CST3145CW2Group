@@ -1,12 +1,14 @@
 var express = require("express");
 var path = require("path");
 var http = require("http");
-const { stdout } = require("process");
+const cors = require('cors')
+app.use(cors());
 
 var app = express();
 
 var publicPath = path.resolve(__dirname, "public");
 app.use(express.static(publicPath));
+
 
 app.use(function(request,response,next) {
     console.log("Request IP: " + request.url);
@@ -24,7 +26,7 @@ app.get("/user", function(request, response) {
 });
 
 app.use(function(request, response) {
-    response.end("This page has not been made yet!");
+    response.status(404).send("This page has not been made yet!");
 });
-console.log("HELLO");
+
 app.listen(3000);
