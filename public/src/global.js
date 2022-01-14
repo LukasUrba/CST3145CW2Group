@@ -1,4 +1,5 @@
- /**
+
+/**
          * Ajax technique to communicate with the server
          * @param  {Any}      data data to be sent to server
          * @param  {Function} operation a variable containing a function

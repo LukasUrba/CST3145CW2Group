@@ -39,16 +39,15 @@ app.use(function(request,response,next) {
 app.get("/lessons", function(request, response) {
     if      (!request.query.ajax)               response.sendFile(path.join(__dirname+'/../client/lessons.html'));
     else if (request.query.ajax == "lessons")	response.sendFile(path.join(__dirname+'/../json/lessons.json'));
-    else                                        response.status(400).next();;
+    else                                        response.status(400).next();
 });
     
 // User page
 app.get("/user", function(request, response) {
     // response.render
-    if(!request.query.ajax) response.sendFile(path.join(__dirname+'/../client/user.html'));
-    else{ 
-        response.send(request.query.ajax); 
-    }
+    if		(!request.query.ajax)				response.sendFile(path.join(__dirname+'/../client/user.html'));
+    else if (request.query.ajax == "user")		response.sendFile(path.join(__dirname+'/../json/user.json'));
+    else                                        response.status(400).next();
 });
 
 // page 404

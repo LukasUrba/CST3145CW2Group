@@ -30,17 +30,13 @@ var vueApp = new Vue({
 
         
         function fillUser(response){
-            this.user = response;
+            vueApp.user = response;
         }
-        function fillPassword(response){
-            this.password = response;
-        }
-        function  fillLessons(response){
-            this.lessons = response;
+        function fillLessons(response){
+            vueApp.lessons = JSON.parse(response).lessons;
         }
 
         await ajax("lessons", fillUser, "get", "");
-        await ajax("lessons", fillPassword, "get", "");
         await ajax("lessons", fillLessons, "get", "");
 
        
