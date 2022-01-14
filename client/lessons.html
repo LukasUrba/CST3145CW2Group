@@ -19,24 +19,14 @@
     </head>
 
     <body>
+        <!-- START background -->
+		<div id="background"></div>
+        <!-- END background -->
 
-        <script>
+        <main id="app">
 
-        let shop = new Vue({
-            data:{
-                product:{}
-            },
-            created:function(){
-                fetch('http://localhost:3000/user').
-                then(function(response){
-                        response.text().then(
-                        function(text){
-                           alert(text);
-                            });
-                    })
-            }
-        })
-        
-    </script>
+        </main>
+
+        <script src="src/vue.js"></script>
     </body>
 </html>

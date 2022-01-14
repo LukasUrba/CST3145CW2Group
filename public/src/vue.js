@@ -4,13 +4,7 @@ var vueApp = new Vue({
 	data: {
 		
 		// array of JSON objects
-		products: [],
-		showcase: [],
-		cart:[],
 		sitename: "Second Coursework",
-		cartOn: false,
-		searchOn: false,
-		carouselCards: 0,
 	},
 
 
@@ -66,12 +60,13 @@ var vueApp = new Vue({
             //handling server response
             function res(response){
                 if (response.ok) return response.text().then(resp => resp);
-                else throw new Error(response);
+                else throw new Error(response.statusText);
             }
 
-            // server error handelr
+            // server error handler
             function exception(error){
                 console.error('Error:', error);
+                return error;
             }
 
 
