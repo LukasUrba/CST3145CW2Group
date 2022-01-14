@@ -3,7 +3,7 @@
     "author": "Edoardo, Francesco, Lukas, Michael",
     "private": true,
     "scripts": {
-        "start": "nodemon app.js"
+        "start": "nodemon src_back/server.js"
     },
     "dependencies": {
         "cors": "^2.8.5",
