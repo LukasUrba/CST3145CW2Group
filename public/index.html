@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue.js loading</title>
+        <link rel="icon" type="image/png"
+            href="https://www.freeiconspng.com/uploads/graduate-icon-20.png" />
+        <!-- custom modules -->
+        <script src="https://unpkg.com/vue"></script>
+
+        <!-- custom style -->
+        <link rel="stylesheet" href="../css/global.css">
+
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+        <div class="lesson_display">
+            <div class="lessons" v-for="lesson in lessons">
+                <div class="lesson-details">
+                    <h2 class="product product_title">Title: {{lesson.topic}}</h2>
+                    <p class="product product_location">Location: {{lesson.location}} </p>
+                    <p class="product product_price">Price: £{{lesson.price}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script>
+
+        var shop = new Vue({
+            el: '#app',
+            data:{
+                lessons:{},
+            },
+            created:
+            function(){
+                fetch('lessons.json').then(
+                    function (response) {
+                        response.json().then(
+                            function (json) {
+                                shop.lessons = json;
+                                console.log(shop.lessons)
+                            }
+                        )
+                    }); 
+            }
+        })
+
+        </script>
+    </body>
+</html>
