@@ -1,8 +1,6 @@
 var express = require("express");
 var path = require("path");
-var http = require("http");
 const cors = require('cors');
-
 
 var app = express();
 
@@ -17,8 +15,7 @@ app.use(function(request,response,next) {
     next();
 });
 
-// var fs = require('fs');
-// var obj = JSON.parse(fs.readFileSync('public/lessons.json', 'utf8'));
+
 // console.log(obj);
 app.get("/lessons", function(request,response) {
     response.end( `
@@ -27,6 +24,10 @@ app.get("/lessons", function(request,response) {
             { "topic": "History", "location": "Oxford", "price": 90 },
             { "topic": "Geography", "location": "Bristol", "price": 120} `
     );
+    // var fs = require('fs');
+    // var obj = JSON.parse(fs.createReadStream('../index.html', 'utf8'));
+    // console.log(obj);
+
 });
 // comment
 app.get("/user", function(request, response) {
