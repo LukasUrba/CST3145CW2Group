@@ -1,10 +1,11 @@
 const express   = require("express");
 const path      = require("path");
+const cors      = require("cors");
 const http      = require("http");
-const cors      = require('cors');
 
-const router = express.Router();
 const urlModule = require("url");
+const router = express.Router();
+const statusCodes = require("../json/statusCodes.json");
 
 const app = express();
 
@@ -15,20 +16,17 @@ app.use(express.static(publicPath));
 
 app.use(cors());
 
+// requestes monitor
 app.use(function(request,response,next) {
-    console.log("Request IP: " + request.url);
+    console.log("Request IP: " + request.ip);
+	console.log("Request URL: " + request.url);
     console.log("Request date: " + new Date());
     next();
 });
 
 // var fs = require('fs');
 // var obj = JSON.parse(fs.readFileSync('public/lessons.json', 'utf8'));
-// console.log(obj);
-/* app.get("/lessons", function(request,response) {
-    response.sendFile(path.join(__dirname+'/../client/html/index.html'));
-}); */
-// Sends static files from the publicPath directory
-//app.use("/index",express.static(publicPath));
+
 
 /* app.use(function(request, response) {
     response.writeHead(200, { "Content-Type": "text/plain" });
@@ -37,22 +35,22 @@ app.use(function(request,response,next) {
  */
 // lessons page
 app.get("/lessons", function(request, response) {
-    if      (!request.query.ajax)               response.sendFile(path.join(__dirname+'/../client/lessons.html'));
-    else if (request.query.ajax == "lessons")	response.sendFile(path.join(__dirname+'/../json/lessons.json'));
-    else                                        response.status(400).next();
+    if      (!request.query.ajax)               response.sendFile(path.join(__dirname+'/../client/lessons.html'))
+    else if (request.query.ajax == "lessons")	response.sendFile(path.join(__dirname+'/../json/lessons.json'))
+    else                                        response.status(statusCodes.clientError.badRequest).next();
 });
     
 // User page
 app.get("/user", function(request, response) {
     // response.render
-    if		(!request.query.ajax)				response.sendFile(path.join(__dirname+'/../client/user.html'));
-    else if (request.query.ajax == "user")		response.sendFile(path.join(__dirname+'/../json/user.json'));
-    else                                        response.status(400).next();
+    if		(!request.query.ajax)			response.sendFile(path.join(__dirname+'/../client/user.html'));
+    else if (request.query.ajax == "user")	response.sendFile(path.join(__dirname+'/../json/user.json'));
+    else                                    response.status(statusCodes.clientError.badRequest).next();
 });
 
 // page 404
 app.use(function(request, response) {
-    response.status(404);
+    response.status(statusCodes.clientError.notFound);
     response.sendFile(path.join(__dirname+'/../client/404.html'));
 });
 

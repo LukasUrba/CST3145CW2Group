@@ -4,8 +4,8 @@ var vueApp = new Vue({
 	data: {
 		user: "",
         password: "",
-		// array of JSON objects
 		sitename: "Second Coursework",
+        // array of JSON objects
         lessons: [],
 	},
 
@@ -14,10 +14,6 @@ var vueApp = new Vue({
 	created(){
 		console.log("Loading page...")
 		
-		/* this.products = products.slice();
-		this.showcase = this.products.slice(); */
-
-		/* this.includeCarousel(); */
 	},
 
 	// selfrunning method which starts after the page has successfully loaded
@@ -30,14 +26,15 @@ var vueApp = new Vue({
 
         
         function fillUser(response){
-            vueApp.user = response;
+            vueApp.user = JSON.parse(response).user[0].email;
+            vueApp.password = JSON.parse(response).user[0].password;
         }
         function fillLessons(response){
             vueApp.lessons = JSON.parse(response).lessons;
         }
 
-        await ajax("lessons", fillUser, "get", "");
-        await ajax("lessons", fillLessons, "get", "");
+        await ajax("user", fillUser, "get", "user");
+        await ajax("lessons", fillLessons, "get", "lessons");
 
        
 	},

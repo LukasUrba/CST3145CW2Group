@@ -1,22 +1,22 @@
 {
     "lessons": [
         {
-            "topic": "MATH",
+            "subject": "MATH",
             "location": "London",
             "price": 100
         },
         {
-            "topic": "Science",
+            "subject": "Science",
             "location": "Liverpool",
             "price": 80
         },
         {
-            "topic": "History",
+            "subject": "History",
             "location": "Oxford",
             "price": 90
         },
         {
-            "topic": "Geography",
+            "subject": "Geography",
             "location": "Bristol",
             "price": 120
         }

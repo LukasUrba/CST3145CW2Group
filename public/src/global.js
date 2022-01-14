@@ -1,11 +1,12 @@
 
+
 /**
-         * Ajax technique to communicate with the server
-         * @param  {Any}      data data to be sent to server
-         * @param  {Function} operation a variable containing a function
-         * @param  {String}   method communication method, like: "POST", "GET", "PUT", "DELETE"
-         * @param  {String}   url to specify the php page to communicate with
-        */
+ * Ajax technique to communicate with the server
+ * @param  {Any}      data data to be sent to server
+ * @param  {Function} operation a variable containing a function
+ * @param  {String}   method communication method, like: "POST", "GET", "PUT", "DELETE"
+ * @param  {String}   url to specify the php page to communicate with
+*/
 async function ajax(data, operation, method, url){
 
     data     = data     ? data     : true;

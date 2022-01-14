@@ -8,15 +8,14 @@
 
         <!-- custom modules -->
         <script src="src/global.js"></script>
+
+        <!-- public modules -->
         <script src="https://unpkg.com/vue"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <!-- custom style -->
         <link rel="stylesheet" href="css/global.css">
-        
-        <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -25,10 +24,10 @@
         <!-- END background -->
 
         <main id="app">
-            <div class="lesson_display">
+            <div class="lessonContainer">
                 <div class="lessons" v-for="lesson in lessons">
                     <div class="lesson-details">
-                        <h2 class="product product_title" v-text="lesson.topic"></h2>
+                        <h2 class="product product_title" v-text="lesson.subject"></h2>
                         <p class="product product_location">Location: {{lesson.location}} </p>
                         <p class="product product_price">Price: £{{lesson.price}}</p>
                     </div>
