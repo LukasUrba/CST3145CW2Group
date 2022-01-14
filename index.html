@@ -8,6 +8,11 @@
         
         <link rel="stylesheet" href="css/global.css">
 
+        <script src="https://unpkg.com/vue"></script>
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -15,7 +20,23 @@
 
 
 
+        <script>
 
-
+        let shop = new Vue({
+            data:{
+                product:{}
+            },
+            created:function(){
+                fetch('http://localhost:3000/user').
+                then(function(response){
+                        response.text().then(
+                        function(text){
+                           alert(text);
+                            });
+                    })
+            }
+        })
+        
+    </script>
     </body>
 </html>
