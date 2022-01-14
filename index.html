@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 
-<html lang="en" >
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Vue.js loading</title>
-		<link rel="icon" type="image/png" href="https://www.freeiconspng.com/uploads/graduate-icon-20.png"/>
-
+        <link rel="icon" type="image/png"
+            href="https://www.freeiconspng.com/uploads/graduate-icon-20.png" />
         <!-- custom modules -->
         <script src="https://unpkg.com/vue"></script>
 
         <!-- custom style -->
         <link rel="stylesheet" href="css/global.css">
-        
+
         <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
@@ -19,22 +19,28 @@
     </head>
 
     <body>
+        <div v-for>
+
+
+        </div>
 
         <script>
 
         let shop = new Vue({
             data:{
-                product:{}
+                lessons:{}
             },
-            created:function(){
-                fetch('http://localhost:3000/user').
-                then(function(response){
-                        response.text().then(
-                        function(text){
-                           alert(text);
-                            });
-                    })
-            }
+            created:
+            function(){
+                fetch('public/lessons.json').then(function(response) {
+                       return response.json();
+                    }).then(function (obj){
+                        console.log(obj);
+                    }).catch(function (error){
+                        console.error("Something went wrong");
+                        console.error(error);
+                    });
+                    }
         })
         
     </script>
