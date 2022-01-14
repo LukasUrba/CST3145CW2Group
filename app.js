@@ -17,8 +17,16 @@ app.use(function(request,response,next) {
     next();
 });
 
+// var fs = require('fs');
+// var obj = JSON.parse(fs.readFileSync('public/lessons.json', 'utf8'));
+// console.log(obj);
 app.get("/lessons", function(request,response) {
-    response.end("");
+    response.end( `
+            {"topic": "MATH", "location": "London", "price": 100 },
+            { "topic": "Science", "location": "Liverpool", "price": 80 },
+            { "topic": "History", "location": "Oxford", "price": 90 },
+            { "topic": "Geography", "location": "Bristol", "price": 120} `
+    );
 });
 // comment
 app.get("/user", function(request, response) {
