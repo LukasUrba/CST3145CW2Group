@@ -35,21 +35,21 @@ app.use(function(request,response,next) {
  */
 // lessons page
 app.get("/lessons", function(request, response) {
-    if      (!request.query.ajax)               response.sendFile(path.join(__dirname+'/../client/lessons.html'))
-    else if (request.query.ajax == "lessons")	response.sendFile(path.join(__dirname+'/../json/lessons.json'))
-    else                                        response.status(statusCodes.clientError.badRequest).next();
+    if      (!request.query.ajax)               response.sendFile(path.join(__dirname+'/../client/lessons.html'));
+    else if (request.query.ajax === "lessons")	response.sendFile(path.join(__dirname+'/../json/lessons.json'));
+    else                                        response.status(statusCodes.clientError.badRequest).end();
 });
     
 // User page
 app.get("/user", function(request, response) {
     // response.render
     if		(!request.query.ajax)			response.sendFile(path.join(__dirname+'/../client/user.html'));
-    else if (request.query.ajax == "user")	response.sendFile(path.join(__dirname+'/../json/user.json'));
-    else                                    response.status(statusCodes.clientError.badRequest).next();
+    else if (request.query.ajax === "user")	response.sendFile(path.join(__dirname+'/../json/user.json'));
+    else                                    response.status(statusCodes.clientError.badRequest).end();
 });
 
 // page 404
-app.use(function(request, response) {
+app.use(function(request, response, next) {
     response.status(statusCodes.clientError.notFound);
     response.sendFile(path.join(__dirname+'/../client/404.html'));
 });

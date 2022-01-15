@@ -65,16 +65,16 @@
 
     
     "serverError":{	 
-        "internalServerError": 300,	
-        "notImplemented": 301,
-        "badGateway": 302,	
-        "serviceUnavailable": 303,
-        "gatewayTimeout": 304,	
-        "httpVersionNotSupported": 305,
-        "variantAlsoNegotiates": 306,	
-        "insufficientStorage": 307,
-        "loopDetected": 308,
-        "notExtended": 310,
-        "networkAuthenticationRequired": 311
+        "internalServerError": 500,	
+        "notImplemented": 501,
+        "badGateway": 502,	
+        "serviceUnavailable": 503,
+        "gatewayTimeout": 504,	
+        "httpVersionNotSupported": 505,
+        "variantAlsoNegotiates": 506,	
+        "insufficientStorage": 507,
+        "loopDetected": 508,
+        "notExtended": 510,
+        "networkAuthenticationRequired": 511
     }
 }

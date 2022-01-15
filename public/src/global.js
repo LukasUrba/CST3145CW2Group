@@ -27,13 +27,13 @@ async function ajax(data, operation, method, url){
     //handling server response
     function res(response){
         if (response.ok) return response.text().then(resp => resp);
-        else throw new Error(response.statusText);
+        else throw new Error(response.statusText, {cause: response});
     }
 
     // server error handler
     function exception(error){
-        console.error('Error:', error);
-        return error;
+        console.error('Exception ➤', error.cause.status, "("+error.message+")");
+        return error.cause.status;
     }
 
 
