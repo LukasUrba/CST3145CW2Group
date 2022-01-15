@@ -1,16 +1,16 @@
-const express   = require("express");
-const path      = require("path");
-const cors      = require("cors");
-const http      = require("http");
+const express   = require("express");   // web framework
+const path      = require("path");      // resources path handler
+const cors      = require("cors")       // allow cross origin access
+const http      = require("http");      // 
 
-const urlModule = require("url");
-const router = express.Router();
-const statusCodes = require("../json/statusCodes.json");
+const urlModule = require("url");       // url sections handler
+const router = express.Router();        // 
+const statusCodes = require("../json/statusCodes.json");    // status codes collection
 
-const app = express();
+const app = express();                  // middlewares handler
 
 // Sets up the path where your static files are
-const publicPath = path.resolve(__dirname, "../public");
+const publicPath = path.resolve(__dirname, "../public");    // public/static folder path
 // Sends static files from the publicPath directory
 app.use(express.static(publicPath));
 
@@ -49,7 +49,7 @@ app.get("/user", function(request, response) {
 });
 
 // page 404
-app.use(function(request, response, next) {
+app.use(function(request, response) {
     response.status(statusCodes.clientError.notFound);
     response.sendFile(path.join(__dirname+'/../client/404.html'));
 });
