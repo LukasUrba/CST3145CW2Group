@@ -32,7 +32,7 @@ async function ajax(data, operation, method, url){
 
     // server error handler
     function exception(error){
-        console.error('Exception ➤', error.cause.status, "("+error.message+")");
+        console.error('Exception ➤', error.cause.url, "\r\n", error.cause.status, "("+error.message+")");
         return error.cause.status;
     }
 
@@ -67,7 +67,7 @@ async function ajax(data, operation, method, url){
                             }).then(response => res(response))
                             .catch(error => exception(error));
             break;
-        default: console.log("Wrong ajax method!");
+        default: console.error("Wrong ajax method!");
             return; //this return avoids "operation" to be executed
     }
 

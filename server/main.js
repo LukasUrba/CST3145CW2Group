@@ -58,6 +58,4 @@ app.use(function(request, response, next) {
 app.use('/', router);
 
 // Starts the app on port 3000 and display a message when it’s started
-app.listen(3000, function() {
-    console.log("App started on port 3000");
-});
+app.listen(3000, console.log("App started on port 3000"));
