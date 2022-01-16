@@ -23,14 +23,14 @@ app.use(function(request,response,next) {
 
 
 // lessons page
-app.get("lessons", function(request, response) {
+app.get("/lessons", function(request, response) {
     if      (!request.query.ajax)               response.sendFile(path.join(__dirname+'/../client/lessons.html'));
     else if (request.query.ajax === "lessons")	response.sendFile(path.join(__dirname+'/../json/lessons.json'));
     else                                        response.status(statusCodes.clientError.badRequest).end();
 });
     
 // User page
-app.get("user"	 , function(request, response) {
+app.get("/user"	 , function(request, response) {
     // response.render
     if		(!request.query.ajax)				response.sendFile(path.join(__dirname+'/../client/user.html'));
     else if (request.query.ajax === "user"	 )	response.sendFile(path.join(__dirname+'/../json/user.json'));
