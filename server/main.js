@@ -7,10 +7,15 @@ const urlModule		= require("url");		// url sections handler
 const statusCodes	= require("../json/statusCodes.json");	// status codes collection
 const publicPath	= path.resolve(__dirname, "../public");	// public/static folder path
 
+const multer  		= require('multer');	// used to upload files and process any multipart POST request like multipart/form-data
+const formData 		= multer();				//{ dest: 'uploads/' }); // https://www.npmjs.com/package/multer
+
 const app			= express();			// middlewares handler
 
 app.use(express.static(publicPath));		// Sends static files from the publicPath directory
 app.use(cors());							// allowing cross origins access
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 			// used for POST request like application/x-www-form-urlencoded
 
 
 // requestes monitor
@@ -35,6 +40,11 @@ app.get("/user"	 , function(request, response) {
     if		(!request.query.ajax)				response.sendFile(path.join(__dirname+'/../client/user.html'));
     else if (request.query.ajax === "user"	 )	response.sendFile(path.join(__dirname+'/../json/user.json'));
     else                                    	response.status(statusCodes.clientError.badRequest).end();
+});
+
+// testing post requestes (x-www-form-urlencoded, multipart/form-data and GrapQL)
+app.post("/test", formData.none(), function(request, response) {
+	response.send(request.body);
 });
 
 // page 404

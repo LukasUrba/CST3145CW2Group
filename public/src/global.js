@@ -32,7 +32,7 @@ async function ajax(data, operation, method, url){
 
     // server error handler
     function exception(error){
-        console.error(error.cause? 'Exception ➤' + error.cause.url + "\r\n" + error.cause.status + "("+error.message+")": error);
+        console.error(error.cause? 'Exception ➤' + error.cause.url + "\r\n" + error.cause.status + " ("+error.message+")": error);
         return error.cause? error.cause.status: false;
     }
 
