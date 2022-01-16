@@ -15,9 +15,9 @@ app.use(cors());							// allowing cross origins access
 
 // requestes monitor
 app.use(function(request,response,next) {
-    console.log("Request IP: " + request.ip);
-	console.log("Request URL: " + request.url);
-    console.log("Request date: " + new Date());
+    console.log("Request IP: "		+ request.ip );
+	console.log("Request URL: "		+ request.url);
+    console.log("Request date: "	+ new Date() );
     next(); // computing the next middleware here below
 });
 
@@ -30,11 +30,11 @@ app.get("lessons", function(request, response) {
 });
     
 // User page
-app.get("user", function(request, response) {
+app.get("user"	 , function(request, response) {
     // response.render
-    if		(!request.query.ajax)			response.sendFile(path.join(__dirname+'/../client/user.html'));
-    else if (request.query.ajax === "user")	response.sendFile(path.join(__dirname+'/../json/user.json'));
-    else                                    response.status(statusCodes.clientError.badRequest).end();
+    if		(!request.query.ajax)				response.sendFile(path.join(__dirname+'/../client/user.html'));
+    else if (request.query.ajax === "user"	 )	response.sendFile(path.join(__dirname+'/../json/user.json'));
+    else                                    	response.status(statusCodes.clientError.badRequest).end();
 });
 
 // page 404
