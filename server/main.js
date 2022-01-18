@@ -42,9 +42,46 @@ app.get("/user"	 , function(request, response) {
     else                                    	response.status(statusCodes.clientError.badRequest).end();
 });
 
+function getStringify(req){
+	return JSON.stringify({
+		headers: req.headers,
+		method: req.method,
+		url: req.url,
+		httpVersion: req.httpVersion,
+		body: req.body,
+		cookies: req.cookies,
+		path: req.path,
+		protocol: req.protocol,
+		query: req.query,
+		hostname: req.hostname,
+		ip: req.ip,
+		originalUrl: req.originalUrl,
+		params: req.params,
+  });	
+}
+
 // testing post requestes (x-www-form-urlencoded, multipart/form-data and GrapQL)
 app.post("/test", formData.none(), function(request, response) {
 	response.send(request.body);
+	console.log(JSON.parse(getStringify(request)));
+});
+
+// testing put requests
+app.put("/test/ajax", function(request, response) {
+	response.send(request.body);
+	console.log(JSON.parse(getStringify(request)));
+});
+
+// testing patch requests
+app.patch("/test/ajax", function(request, response) {
+	response.send(request.body);
+	console.log(JSON.parse(getStringify(request)));
+});
+
+// testing delete request
+app.delete("/test/:ajax", function(request, response) {
+	response.send(request.params.ajax);
+	console.log(JSON.parse(getStringify(request)));
 });
 
 // page 404

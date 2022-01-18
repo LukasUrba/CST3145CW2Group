@@ -1,4 +1,14 @@
 
+/**
+ * Checking whether astring is a json or not
+ * @param {string} string 
+ * @returns {boolean} true or false
+ */
+function isJSON(string){
+    try { JSON.parse(string); }
+    catch (e) { return false; }  
+    return true;
+}
 
 /**
  * Ajax technique to communicate with the server
@@ -32,7 +42,7 @@ async function ajax(data, operation, method, url){
 
     // server error handler
     function exception(error){
-        console.error(error.cause? 'Exception ➤' + error.cause.url + "\r\n" + error.cause.status + " ("+error.message+")": error);
+        console.error(error.cause? 'Exception ➤ ' + error.cause.url + "\r\n" + error.cause.status + " ("+error.message+")": error);
         return error.cause? error.cause.status: false;
     }
 
@@ -54,7 +64,7 @@ async function ajax(data, operation, method, url){
                             .catch(error => exception(error));
             break;
         case "DELETE":
-            data = JSON.parse(data);
+            data = isJSON(data)? JSON.parse(data): data;
             output = await  fetch(url + '/' + JSON.stringify({ajax: data}), {
                                 method: method
                             }).then(response => res(response))
@@ -63,7 +73,8 @@ async function ajax(data, operation, method, url){
         case "PUT": case "PATCH":
             output = await  fetch(url + "/" + "ajax", {
                                 method: method,
-                                body:   data
+                                headers:{"Content-Type": "application/json"},
+                                body:   JSON.stringify({ajax: data})
                             }).then(response => res(response))
                             .catch(error => exception(error));
             break;
